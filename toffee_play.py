@@ -1,38 +1,20 @@
-name: 🎬 Toffee Auto Playlist Builder
+import requests
+import json
 
-on:
-  schedule:
-    - cron: "0 */6 * * *"    # প্রতি ৬ ঘণ্টায় অটো রান (বাংলাদেশ সময় অনুযায়ী)
-  workflow_dispatch: {}       # চাইলে ম্যানুয়ালি রান করা যাবে
+# ✅ Toffee Auto Playlist Builder Script
 
-permissions:
-  contents: write
+def fetch_toffee_channels(api_url, output_file):
+    response = requests.get(api_url)
+    data = response.json()
+    
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write("#EXTM3U\n")  # M3U Header
+        for item in data["data"]:
+            title = item.get("title", "Unknown")
+            stream = item.get("stream_url", "")
+            f.write(f'#EXTINF:-1 tvg-name="{title}" group-title="Toffee",{title}\n{stream}\n')
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: 📦 Checkout repository
-        uses: actions/checkout@v4
-
-      - name: 🐍 Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.10"
-
-      - name: 📦 Install dependencies
-        run: pip install requests
-
-      - name: ▶️ Run Toffee Script
-        env:
-          TOFFEE_JWT: ${{ secrets.TOFFEE_JWT }}
-        run: python toffee_play.py
-
-      - name: 💾 Commit and Push Playlist
-        run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "actions@github.com"
-          git add toffee_channels.m3u
-          git commit -m "🔄 Auto updated Toffee playlist"
-          git push
+if __name__ == "__main__":
+    api_url = "https://toffeelive.com/api/web/playback/sy5m-JQBv9knK3AHYTTk"
+    fetch_toffee_channels(api_url, "toffee_playlist.m3u")
+    print("✅ Playlist generated successfully!")
