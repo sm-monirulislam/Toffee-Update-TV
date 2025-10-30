@@ -2,12 +2,16 @@ name: "Toffee Auto Playlist Builder"
 
 on:
   schedule:
-    - cron: "0 */6 * * *"    # প্রতি ৬ ঘণ্টায় রান হবে (UTC সময়)
+    - cron: "0 */6 * * *"
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
+    env:
+      TOFFEE_API_TOKEN: ${{ secrets.TOFFEE_API_TOKEN }}
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
