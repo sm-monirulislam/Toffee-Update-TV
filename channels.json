@@ -1,12 +1,14 @@
 [
   {
-    "id": "sy5m-JQBv9knK3AHYTTk",
-    "name": "Sony Six HD",
-    "api_url": "https://toffeelive.com/api/web/playback/sy5m-JQBv9knK3AHYTTk"
+    "name": "Toffee Sports HD",
+    "id": "sy5m-JQBv9knK3AHYTTk"
   },
   {
-    "id": "HkI8PLmZP2lN7pYgG7WZ",
-    "name": "T Sports HD",
-    "api_url": "https://toffeelive.com/api/web/playback/HkI8PLmZP2lN7pYgG7WZ"
+    "name": "Toffee Movies",
+    "id": "XK8m-tqQqLkWc6o7Hyyz"
+  },
+  {
+    "name": "Toffee Bangla",
+    "id": "MspD-mnQjT72X5apLdtt"
   }
 ]
