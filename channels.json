@@ -1,14 +1,10 @@
 [
   {
-    "name": "Toffee Sports HD",
-    "id": "sy5m-JQBv9knK3AHYTTk"
+    "name": "Toffee Sports",
+    "api_url": "https://toffeelive.com/api/web/playback/sy5m-JQBv9knK3AHYTTk"
   },
   {
     "name": "Toffee Movies",
-    "id": "XK8m-tqQqLkWc6o7Hyyz"
-  },
-  {
-    "name": "Toffee Bangla",
-    "id": "MspD-mnQjT72X5apLdtt"
+    "api_url": "https://toffeelive.com/api/web/playback/abc123xyz"
   }
 ]
